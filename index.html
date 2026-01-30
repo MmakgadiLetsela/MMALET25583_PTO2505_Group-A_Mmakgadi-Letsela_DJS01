@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Podcast App</title>
+    <link rel="stylesheet" href="styling.css">
+    <script defer src="./script.js" type="module"></script>
+</head>
+<body>
+    <header class="header">
+        <section class="heading">
+            <div class="podcast-name">🎙️ My Podcast App</div>
+            <div class="search">
+                <button class="search-button">🔎</button>
+            </div>
+        </section>
+    </header>
+
+    <main class="main-content">
+        <nav class="filter-nav">
+            <h4 class="filter-heading">
+                Filter by:
+            </h4>
+            <div class="filters">
+                <select id="genre-filter" class="filter-select">
+                    <option value="all">All Genres</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="news">News</option>
+                    <option value="sports">Sports</option>
+                    <option value="technology">Technology</option>
+                    <option value="health">Health</option>
+                    <option value="business">Business</option> 
+                    <option value="education">Education</option>
+                    <option value="entrepreneurship">Entrepreneurship</option>
+                    <option value="true-crime">True Crime</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="nature">Nature</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="mystery">Mystery</option>
+                </select>
+
+                <select id="update-filter" class="filter-select">
+                    <option value="anytime">Anytime</option>
+                    <option value="recent">Recently Updated</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div> 
+        </nav>
+        
+        <div class="podcast-grid" id="podcast-grid">
+        
+            <!-- Podcast cards will be dynamically inserted here -->
+        </div>
+
+        <dialog id="podcast-modal" class="modal">
+            <div class="modal-header">
+                <h2 class="podcast-title"></h2>
+                <button type="button" class="close-modal" id="close-modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-content">
+                <img src="" alt="Podcast Cover" class="modal-podcast-image">
+                <div class="modal-podcast-info">
+                    <div id="modal-podcast-description">
+                        <h4>Description:</h4>
+                        <p> id="modal-description-text"></p>
+                    </div>
+                    <div id="modal-genres">
+                        <h4>Genres:</h4>
+                        <p id="modal-genres-text"></p>
+                    </div>
+                    <div id="modal-last-updated"></div>
+                </div>
+            </div>
+        
+        
+        </dialog>
+    </main>
+
+
+</body>
+</html>

@@ -56,26 +56,22 @@
             <!-- Podcast cards will be dynamically inserted here -->
         </div>
 
-        <dialog id="podcast-modal" class="modal">
-            <div class="modal-header">
-                <h2 class="podcast-title"></h2>
-                <button type="button" class="close-modal" id="close-modal">
-                    &times;
-                </button>
-            </div>
+        <dialog id="modal" class="modal-hidden">
+            
             <div class="modal-content">
-                <img src="" alt="Podcast Cover" class="modal-podcast-image">
-                <div class="modal-podcast-info">
-                    <div id="modal-podcast-description">
-                        <h4>Description:</h4>
-                        <p> id="modal-description-text"></p>
-                    </div>
-                    <div id="modal-genres">
-                        <h4>Genres:</h4>
-                        <p id="modal-genres-text"></p>
-                    </div>
-                    <div id="modal-last-updated"></div>
+                <h2 class="podcast-title" id="modal-title"></h2>
+                <button type="button" class="close-modal" id="close-modal">&times; </button>
+                <img alt="Podcast Cover" class="modal-podcast-image">
+
+                <div id="modal-description">
+                    <h4>Description:</h4>
+                    <p id="modal-description-text" class="modal-description-text"></p>
                 </div>
+                <div id="modal-genres">
+                    <h4>Genres:</h4>
+                    <p id="modal-genres-text" class="modal-genres-text"></p>
+                </div>
+                <div id="modal-last-updated" class="modal-last-updated"></div>
             </div>
         
         

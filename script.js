@@ -34,5 +34,19 @@ function openModal (index) {
     
     podcastModal.classList.remove("modal-hidden");
 }
+// open podcast modal with all details
 
+
+const closeModal =document.getElementById("close-modal");
+closeModal.addEventListener("click", () => {
+podcastModal.classList.add("modal-hidden");
+
+}); // add event listener to close modal
+
+window.addEventListener("click", (event) => {
+    if (event.target === podcastModal) {
+        podcastModal.classList.add("modal-hidden");
+    }
+}); // close modal when clicking outside of it
+    
 

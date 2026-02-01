@@ -4,7 +4,21 @@ import {podcasts, genres, seasons} from './data.js';
 
 const podcastGrid = document.getElementById("podcast-grid");
 
-podcasts.forEach((podcast, index) => {
+podcasts.forEach((podcast, id) => {
+    
+    const genreTitles = podcast.genres
+    .map(id => {
+        const genreObj = genres.find(g => g.id === id);
+        return genreObj ? genreObj.title : "Unknown";   
+    })
+    .join(", ");
+    // used too lookup genre titles using the ids in the podcast objects
+    
+    
+    
+    
+    
+    
     const podcastCard = document.createElement("div");
 podcastCard.className = "podcast-card";
 podcastCard.innerHTML = `
@@ -16,13 +30,22 @@ podcastCard.innerHTML = `
 `;
    
    
-    podcastCard.addEventListener("click", () => openModal(index));
+    podcastCard.addEventListener("click", () => openModal(id));
     podcastGrid.appendChild(podcastCard);
     
 }); // render podcast previews
 
-function openModal (index) {
-    const podcast = podcasts[index];
+
+
+
+
+
+
+
+
+function openModal (id) {
+    const podcast = podcasts.find(p => p.id === id) ;
+
     const podcastModal = document.getElementById("modal");
     podcastModal.querySelector("#modal-title").textContent = podcast.title;
     podcastModal.querySelector("#modal-image").src = podcast.image;

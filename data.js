@@ -236,7 +236,7 @@ export const seasons = [
         title: "Season 2",
         episodes: 8,
       },
-      {
+      { 
         title: "Season 3",
         episodes: 9,
       },

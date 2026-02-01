@@ -27,8 +27,7 @@ podcastCard.innerHTML = `
 `; // create podcast card HTML structure    
    
    
-    podcastCard.addEventListener("click", () => openModal(id));
-    podcastGrid.appendChild(podcastCard);
+    podcastCard.addEventListener("click", () => openModal(podcast.id));
     
 
     return podcastCard;
@@ -53,24 +52,43 @@ function renderPodcastGrid(){
 
 
 
-function openModal (id) {
-    const podcast = podcasts.find(p => p.id === id) ;
+function openModal (podcastId) {
+    const podcast = podcasts.find(p => p.id === podcastId) ;
 
     const podcastModal = document.getElementById("modal");
     podcastModal.querySelector("#modal-title").textContent = podcast.title;
     podcastModal.querySelector("#modal-image").src = podcast.image;
-    podcastModal.querySelector("#modal-description-text").textContent = podcast.description;
-    podcastModal.querySelector("#modal-genres-text").textContent = `Genres: ${podcast.genres}`;
-    podcastModal.querySelector("#modal-last-updated").textContent = `Last Updated: ${podcast.updated}`;
-    podcastModal.querySelector("#modal-seasons").textContent = `Seasons: ${podcast.seasons}`;
+    podcastModal.querySelector("#modal-description").textContent = podcast.description;
+   
+    podcastModal.querySelector("#modal-genres").textContent = 
+    "Genres: " + podcast.genres.map(id => {
+        const genreObj = genres.find(g => g.id === id);
+        return genreObj ? genreObj.title : "Unknown";
+    })
+    .join(", ");
     
+    podcastModal.querySelector("#modal-last-updated").textContent =
+    "Last Updated: " + new Date(podcast.updated).toLocaleDateString();
+
+    podcastModal.querySelector("#modal-seasons").textContent =
+    `Seasons: ${podcast.seasons}`;
+
+    const seasonObj =seasons.find(s => s.podcastId === podcastId);
+    const seasonList = seasonObj.seasonDetails.map(season => 
+    `Season ${season.seasonNumber}: ${season.episodes} episodes`).join("\n");
+
+    
+    const modalSeasons = podcastModal.querySelector("#modal-seasons-list");
+    modalSeasons.textContent = seasonList;
     
     podcastModal.classList.remove("modal-hidden");
 }
 // open podcast modal with all details
 
 
-const closeModal =document.getElementById("close-modal");
+
+
+const closeModal = document.getElementById("close-modal");
 closeModal.addEventListener("click", () => {
 podcastModal.classList.add("modal-hidden");
 

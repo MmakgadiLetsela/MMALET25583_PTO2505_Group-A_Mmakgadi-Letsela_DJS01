@@ -13,10 +13,7 @@ function createPodcastCard(podcast) {
     
     const updatedDate = new Date(podcast.updated).toLocaleDateString();
     // format the updated date to a more readable format
-    
 
-
-    
     
     
     const podcastCard = document.createElement("div");
@@ -27,15 +24,28 @@ podcastCard.innerHTML = `
     <p class="podcast-genre">Genre: ${genreTitles}</p>
     <p class="podcast-seasons">Seasons: ${podcast.seasons}</p>
     <p>Updated: ${updatedDate}</p>
-`;
+`; // create podcast card HTML structure    
    
    
     podcastCard.addEventListener("click", () => openModal(id));
     podcastGrid.appendChild(podcastCard);
     
-}; // create podcast card element
+
+    return podcastCard;
+}; // function to handle podcast card creation, including genre titles and updated date formatting
 
 
+
+function renderPodcastGrid(){
+
+    const podcastGrid = document.getElementById("podcast-grid");
+    podcastGrid.innerHTML = ""; // clear existing content
+
+    podcasts.forEach(podcast => {
+        const podcastCard = createPodcastCard(podcast);
+        podcastGrid.appendChild(podcastCard);
+    });
+}
 
 
 

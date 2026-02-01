@@ -49,13 +49,12 @@ function renderPodcastGrid(){
 
 
 
-
+const podcastModal = document.getElementById("modal");
 
 
 function openModal (podcastId) {
     const podcast = podcasts.find(p => p.id === podcastId) ;
 
-    const podcastModal = document.getElementById("modal");
     podcastModal.querySelector("#modal-title").textContent = podcast.title;
     podcastModal.querySelector("#modal-image").src = podcast.image;
     podcastModal.querySelector("#modal-description").textContent = podcast.description;
@@ -65,7 +64,7 @@ function openModal (podcastId) {
         const genreObj = genres.find(g => g.id === id);
         return genreObj ? genreObj.title : "Unknown";
     })
-    .join(", ");
+    .join("  ");
     
     podcastModal.querySelector("#modal-last-updated").textContent =
     "Last Updated: " + new Date(podcast.updated).toLocaleDateString();
@@ -73,13 +72,15 @@ function openModal (podcastId) {
     podcastModal.querySelector("#modal-seasons").textContent =
     `Seasons: ${podcast.seasons}`;
 
+   
+   
     const seasonObj = seasons.find(s => s.id === podcastId);
     const seasonList = seasonObj.seasonDetails.map(season => 
-    `$Seasons ${season.seasonNumber}: ${season.episodes} episodes`).join("\n");
+    `<li>Seasons ${season.title}: ${season.episodes} episodes</li>`).join("  ");
 
     
     const modalSeasons = podcastModal.querySelector("#modal-seasons-list");
-    modalSeasons.textContent = seasonList;
+    modalSeasons.innerHTML = seasonList;
     
     podcastModal.classList.remove("modal-hidden");
 }

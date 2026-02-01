@@ -1,10 +1,7 @@
 import {podcasts, genres, seasons} from './data.js'; 
 
 
-
-const podcastGrid = document.getElementById("podcast-grid");
-
-podcasts.forEach((podcast, id) => {
+function createPodcastCard(podcast) {
     
     const genreTitles = podcast.genres
     .map(id => {
@@ -14,8 +11,11 @@ podcasts.forEach((podcast, id) => {
     .join(", ");
     // used too lookup genre titles using the ids in the podcast objects
     
+    const updatedDate = new Date(podcast.updated).toLocaleDateString();
+    // format the updated date to a more readable format
     
-    
+
+
     
     
     
@@ -24,16 +24,16 @@ podcastCard.className = "podcast-card";
 podcastCard.innerHTML = `
     <img src="${podcast.image}" alt="${podcast.title} Cover Art" class="podcast-image"/>
     <h3 class="podcast-title">${podcast.title}</h3>
-    <p class="podcast-genre">Genre: ${podcast.genres}</p>
+    <p class="podcast-genre">Genre: ${genreTitles}</p>
     <p class="podcast-seasons">Seasons: ${podcast.seasons}</p>
-    <p>Updated: ${podcast.updated}</p>
+    <p>Updated: ${updatedDate}</p>
 `;
    
    
     podcastCard.addEventListener("click", () => openModal(id));
     podcastGrid.appendChild(podcastCard);
     
-}); // render podcast previews
+}; // create podcast card element
 
 
 

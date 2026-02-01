@@ -73,9 +73,9 @@ function openModal (podcastId) {
     podcastModal.querySelector("#modal-seasons").textContent =
     `Seasons: ${podcast.seasons}`;
 
-    const seasonObj =seasons.find(s => s.podcastId === podcastId);
+    const seasonObj = seasons.find(s => s.id === podcastId);
     const seasonList = seasonObj.seasonDetails.map(season => 
-    `Season ${season.seasonNumber}: ${season.episodes} episodes`).join("\n");
+    `$Seasons ${season.seasonNumber}: ${season.episodes} episodes`).join("\n");
 
     
     const modalSeasons = podcastModal.querySelector("#modal-seasons-list");
@@ -101,3 +101,4 @@ window.addEventListener("click", (event) => {
 }); // close modal when clicking outside of it
     
 
+renderPodcastGrid(); // initial rendering of podcast grid
